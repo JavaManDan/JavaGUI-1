@@ -1,0 +1,119 @@
+import java.awt.*;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
+
+public class Template {
+	
+	private JFrame frame;
+	private JPanel central;
+	private JPanel leftContent;
+	private JPanel leftPanels;
+	
+	
+	private JPanel MainArea;
+	private JPanel topbanner;
+	private JPanel topspacer;
+
+	//food items (JButtons) selection on left panel.
+	private JButton LookUp;
+	private JButton Add;
+	private JButton Del;
+	private JButton Logo;
+	
+	public static void main(String[] args)throws IOException {
+		// TODO Auto-generated method stub
+			@SuppressWarnings("unused")
+			Template GUI = new Template();
+	}
+
+
+	public Template() {
+		GUILayoutSetup();
+	}
+	
+
+	public void GUILayoutSetup() {
+		frame = new JFrame("Improved Java PhoneBook?");
+		LookUp = new JButton();
+		Add = new JButton();
+		Del = new JButton();
+		Logo = new JButton();
+		
+		MainArea = new JPanel();
+		topbanner = new JPanel();
+		topspacer = new JPanel();
+		
+		central = new JPanel();
+		leftContent = new JPanel();
+		leftPanels = new JPanel();
+		
+		
+	    frame.setLayout(new BorderLayout());
+	    central.setBorder(new LineBorder(Color.BLACK, 1));	
+	    central.setLayout(new FlowLayout());
+	   
+	    //everything will be added to frame all layout managers and jpanels etc...
+	
+	    //will contain the food items...
+	    leftContent.setBorder(new LineBorder(Color.BLACK));
+	    leftContent.setBackground(Color.WHITE);
+	    //will be left of screen WEST.
+	    frame.add(leftContent, BorderLayout.WEST);
+	    //set preffered dimension.
+	    leftContent.setPreferredSize(new Dimension(110, 575));
+	    leftPanels.setBorder(new LineBorder(Color.BLACK));
+	    leftPanels.setLayout(new GridLayout(4,1));
+	    //all our buttons...
+	    leftPanels.add(LookUp);
+	    leftPanels.add(Add);
+	    leftPanels.add(Del);
+	    leftPanels.add(Logo);
+	
+	    MainArea.setLayout(new GridLayout(3,3,7,7 ));
+	    
+	    //add all leftpanel stuff to leftcontent container.
+	    leftPanels.setPreferredSize(new Dimension(92, 390));
+	    leftContent.add(leftPanels);
+	   	   
+	    //itea panel, border and layoutmgr		
+	    //vheight and vwidth
+	  	
+	    //GUI_ItemDisplayBurger();
+	    //central...
+	    central.add(topbanner);
+	    central.add(topspacer);
+	    central.add(MainArea);	 
+	    
+	    
+	    topbanner.setBorder(new LineBorder(Color.BLACK));
+	    topspacer.setBorder(new LineBorder(Color.BLACK));
+	    MainArea.setBorder(new LineBorder(Color.BLACK));	   
+	    //GUIMainAreaColor();
+	    
+	    //set our sizes...
+	    MainArea.setPreferredSize(new Dimension(340,400));
+	    topspacer.setPreferredSize(new Dimension(340,12));
+	    topbanner.setPreferredSize(new Dimension(340, 97));
+	    
+	    
+	    //add all our stuff to the frame so it can be seen.
+	    frame.add(central, BorderLayout.CENTER);
+	    frame.setSize(480,575);
+	    GUI_Refresh();
+	    
+	 	    
+	}
+	
+	public void GUI_Refresh() {
+		frame.setVisible(true);
+		frame.repaint();
+	}
+	
+	
+
+}
